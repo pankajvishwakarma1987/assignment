@@ -1,0 +1,53 @@
+
+<div class="example-container"  >
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button ><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name"> {{title}} App &nbsp;&nbsp;&nbsp;<span *ngIf="data.length<=0" class="text-danger"> Loading data <div class="spinner-border" role="status">
+  <small class="sr-only">Loading...</small>
+</div></span></h1>
+	
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" *ngIf="dataSource">
+    <mat-sidenav-content>
+	<mat-form-field>
+	<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+	</mat-form-field>
+	
+	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+	
+	<!-- Title Column -->
+	<ng-container matColumnDef="title">
+		<th mat-header-cell *matHeaderCellDef> Title </th>
+		<td mat-cell *matCellDef="let element" (click)="openDialog(element)"> {{element.title}} </td>
+	</ng-container>
+	
+	<!-- Url Column -->
+	<ng-container matColumnDef="url">
+		<th mat-header-cell *matHeaderCellDef> URL </th>
+		<td mat-cell *matCellDef="let element"> {{element.url}} </td>
+	</ng-container>
+	
+	<!-- created at Column -->
+	<ng-container matColumnDef="created_at">
+		<th mat-header-cell *matHeaderCellDef> Create At </th>
+		<td mat-cell *matCellDef="let element"> {{element.created_at|date:'mediumDate'}} </td>
+	</ng-container>
+	
+	<!-- author Column -->
+	<ng-container matColumnDef="author">
+		<th mat-header-cell *matHeaderCellDef> Author </th>
+		<td mat-cell *matCellDef="let element"> {{element.author}} </td>
+	</ng-container>
+	
+	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+	<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+	
+		<router-outlet></router-outlet>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+	</div>
+	
+
+
