@@ -25,19 +25,19 @@
 	<!-- Url Column -->
 	<ng-container matColumnDef="url">
 		<th mat-header-cell *matHeaderCellDef> URL </th>
-		<td mat-cell *matCellDef="let element"> {{element.url}} </td>
+		<td mat-cell *matCellDef="let element" (click)="openDialog(element)"> {{element.url}} </td>
 	</ng-container>
 	
 	<!-- created at Column -->
 	<ng-container matColumnDef="created_at">
 		<th mat-header-cell *matHeaderCellDef> Create At </th>
-		<td mat-cell *matCellDef="let element"> {{element.created_at|date:'mediumDate'}} </td>
+		<td mat-cell *matCellDef="let element" (click)="openDialog(element)"> {{element.created_at|date:'mediumDate'}} </td>
 	</ng-container>
 	
 	<!-- author Column -->
 	<ng-container matColumnDef="author">
 		<th mat-header-cell *matHeaderCellDef> Author </th>
-		<td mat-cell *matCellDef="let element"> {{element.author}} </td>
+		<td mat-cell *matCellDef="let element" (click)="openDialog(element)"> {{element.author}} </td>
 	</ng-container>
 	
 	<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
