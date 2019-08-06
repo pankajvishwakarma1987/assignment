@@ -2,7 +2,7 @@
 <div class="example-container"  >
   <mat-toolbar color="primary" class="example-toolbar">
     <button mat-icon-button ><mat-icon>menu</mat-icon></button>
-    <h1 class="example-app-name"> {{title}} App &nbsp;&nbsp;&nbsp;<span *ngIf="data.length<=0" class="text-danger"> Loading data <div class="spinner-border" role="status">
+    <h1 class="example-app-name"> {{title}} App &nbsp;&nbsp;&nbsp;<span *ngIf="dataSource" class="text-danger"> Loading data <div class="spinner-border" role="status">
   <small class="sr-only">Loading...</small>
 </div></span></h1>
 	
@@ -11,7 +11,7 @@
   <mat-sidenav-container class="example-sidenav-container" *ngIf="dataSource">
     <mat-sidenav-content>
 	<mat-form-field>
-	<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+	<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter (title only)">
 	</mat-form-field>
 	
 	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

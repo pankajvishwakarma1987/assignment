@@ -11,7 +11,6 @@ import {DialogComponent} from './dialog/dialog.component';
 })
 export class AppComponent {
   title = 'Assignment';
-  data:[]=[];
   displayedColumns: string[] = ['title', 'url', 'created_at', 'author'];
   dataSource:any;
 
@@ -24,8 +23,11 @@ export class AppComponent {
 	  setInterval(() => { 
 		return this.http.get('https://hn.algolia.com/api/v1/search_by_date?tags=story').subscribe((data: any) => {
 			if(data && data.hits && data.hits.length>0){
-			 this.data = data.hits;
-			  this.dataSource = new MatTableDataSource(this.data);
+			 var filterdata = data.hits;
+			  this.dataSource = new MatTableDataSource(filterdata);
+			    this.dataSource.filterPredicate = function(filterdata, filter: string) {
+				  return filterdata.title.toLowerCase().includes(filter);
+				};
 			}
       })
 	  }, 10000);		
